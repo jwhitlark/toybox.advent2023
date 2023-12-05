@@ -57,3 +57,11 @@
 
 ;; End part one.
   )
+
+(def sample-data (map parse-input-line (load-sample)))
+(def data (map parse-input-line (load-data)))
+
+(defn extra-cards [card]
+  (->> (correct-numbers card)
+       count))
+
