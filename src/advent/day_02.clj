@@ -89,3 +89,22 @@
 
   ;; end part one
   )
+
+;; Should have done this in the first place.
+(def inputs (into {} (map parse-input-line (load-data))))
+(def sample-inputs (into {} (map parse-input-line sample-input)))
+
+(defn merge-hands [game]
+  (apply merge-with max (val game)))
+
+(defn part-two [the-inputs]
+  (reduce + (map #(->> % merge-hands (map val) (reduce *))
+                 the-inputs)))
+
+(comment ;; part two
+  (tap> (part-two sample-inputs)) ;; => 2286
+
+  (tap> (part-two inputs)) ;; => <redacted>
+
+  ;; end comment
+  )
