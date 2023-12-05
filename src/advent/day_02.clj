@@ -106,5 +106,14 @@
 
   (tap> (part-two inputs)) ;; => <redacted>
 
+  ;; all in one go ;-P
+  (tap> (reduce + (map #(->> %
+                             val
+                             (apply merge-with max)
+                             (map val)
+                             (reduce *))
+                       (into {}
+                             (map parse-input-line (load-data))))))
+
   ;; end comment
   )
